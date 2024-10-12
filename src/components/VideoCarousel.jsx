@@ -22,6 +22,9 @@ const VideoCarousel = () => {
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   useGSAP(() => {
+    gsap.to('#slider', {
+      
+    })
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
@@ -127,6 +130,11 @@ const VideoCarousel = () => {
                   preload="auto"
                   muted
                   ref={(el) => (videoRef.current[i] = el)}
+                  onEnded={ () => 
+                    i !== 3 ? handleProcess('video-end', i)
+                    : handleProcess('video-last')
+
+                  }
                   onPlay={() => {
                     setVideo((prevVideo) => ({
                       ...prevVideo,
