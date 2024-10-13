@@ -1,4 +1,4 @@
-export const animateWidthGsapTimeline = (timeline, rotationRef, rotation, firstTarget, secondTarget, animationProps) => {
+export const animateWithGsapTimeline = (timeline, rotationRef, rotationState, firstTarget, secondTarget, animationProps) => {
   timeline.to(rotationRef.current.rotation, {
     y: rotationState,
     duration: 1,
@@ -8,5 +8,10 @@ export const animateWidthGsapTimeline = (timeline, rotationRef, rotation, firstT
     ...animationProps, 
     ease: 'power2.inOut'
   },
+'<')
+timeline.to(secondTarget, {
+  ...animationProps, 
+  ease: 'power2.inOut'
+},
 '<')
 }

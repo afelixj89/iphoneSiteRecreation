@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { models, sizes } from "../constants/index.js";
-import animateWidthGsapTimeline from "../utils/animations.js";
+import { animateWithGsapTimeline } from "../utils/animations.js";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -29,15 +29,15 @@ const Model = () => {
   const tl = gsap.timeline();
 
   useEffect(() => {
-    if (size === large) {
-      animateWidthGsapTimeline(tl, small, smallRotation,'#view1', '#view2', {
+    if (size === 'large') {
+      animateWithGsapTimeline(tl, small, smallRotation,'#view1', '#view2', {
         transform: 'translateX(-100%)',
         duration: 2
       });
     }
 
-    if (size === small) {
-      animateWidthGsapTimeline(tl, large, largeRotation,'#view2', '#view1', {
+    if (size === 'small') {
+      animateWithGsapTimeline(tl, large, largeRotation,'#view2', '#view1', {
         transform: 'translateX(0)',
         duration: 2
       });
