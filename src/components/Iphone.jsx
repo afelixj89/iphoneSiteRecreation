@@ -6,18 +6,13 @@ Source: https://sketchfab.com/3d-models/apple-iphone-15-pro-max-black-df17520841
 Title: Apple iPhone 15 Pro Max Black
 */
 
-import React, { useEffect, useRef } from 'react';
-import { useGLTF, useTexture } from '@react-three/drei';
-import * as THREE from 'three';
-
-
-
+import React, { useEffect, useRef } from "react";
+import { useGLTF, useTexture } from "@react-three/drei";
+import * as THREE from "three";
 
 function Model(props) {
-  const { nodes, materials } = useGLTF('./models/scene.glb')
+  const { nodes, materials } = useGLTF("./models/scene.glb");
   const texture = useTexture(props.item.img);
-
-
 
   useEffect(() => {
     Object.entries(materials).map((material) => {
@@ -147,7 +142,10 @@ function Model(props) {
         geometry={nodes.xXDHkMplTIDAXLN.geometry}
         material={materials.pIJKfZsazmcpEiU}
         scale={0.01}
-      />
+      >
+        <meshStandardMaterial roughness={1} map={texture} />
+      </mesh>
+
       <mesh
         castShadow
         receiveShadow
@@ -254,9 +252,9 @@ function Model(props) {
         scale={0.01}
       />
     </group>
-  )
+  );
 }
 
 export default Model;
 
-useGLTF.preload('./models/scene.glb')
+useGLTF.preload("./models/scene.glb");
