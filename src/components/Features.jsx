@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { animateWithGsap } from "../utils/animations";
+import { explore1Img, exploreVideo, explore2Img } from "../utils";
+import { animateWithGsap } from "../utils/animations.js";
+import gsap from "gsap";
 
 const Features = () => {
+  const videoRef = useRef();
+
   useGSAP(() => {
     animateWithGsap("#features_title", { y: 0, opacity: 1 });
+    animateWithGsap(
+      ".g_grow",
+      {
+        scale: 1,
+        opacity: 1,
+        ease: "power1",
+      },
+      { scrub: 5.5 }
+    );
   }, []);
 
   return (
@@ -20,8 +33,42 @@ const Features = () => {
         <div className="mt-32 mb-24 pl-24">
           <h2 className="text-5xl lg:text-7xl font-semibold">iPhone</h2>
           <h2 className="text-5xl lg:text-7xl font-semibold">
-            Forged in titanium!
+            Forged in titanium.
           </h2>
+        </div>
+        <div className="flex-center flex-col sm:px-10">
+          <div className="relative h-[50vh] w-full flex items-center">
+            <video
+              playsInline
+              id="exploreVideo"
+              className="w-full h-full object-cover"
+              preload="none"
+              muted
+              autoPlay
+              ref={videoRef}
+            >
+              <source src={exploreVideo} type="video/mp4" />
+            </video>
+
+            <div className="flex flex-col w-fill relative">
+              <div className="feature-video-cointainer">
+                <div className="overflow-hidden flex-1 h-[50vh]">
+                  <img
+                    src={explore1Img}
+                    alt="titanium"
+                    className="feature-video g_grow"
+                  />
+                </div>
+                <div className="overflow-hidden flex-1 h-[50vh]">
+                  <img
+                    src={explore2Img}
+                    alt="titanium2"
+                    className="feature-video g_grow"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
