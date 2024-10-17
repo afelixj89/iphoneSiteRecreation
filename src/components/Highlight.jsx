@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { rightImg, watchImg } from "../utils";
 import VideoCarousel from "./VideoCarousel";
 
-const Highlights = () => {
+const Highlight = () => {
   useGSAP(() => {
     gsap.to("#title", {
       opacity: 1,
@@ -45,4 +45,4 @@ const Highlights = () => {
   );
 };
 
-export default Highlights;
+export default Highlight;

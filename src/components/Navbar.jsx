@@ -1,6 +1,7 @@
 import React from "react";
 import { appleImg, bagImg, searchImg } from "../utils/index.js";
 import { navLists } from "../constants";
+import { SignOutButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
   return (
@@ -16,6 +17,7 @@ const Navbar = () => {
           <img src={searchImg} alt="search" width={18} height={18} />
           <img src={bagImg} alt="bag" width={18} height={18} />
         </div>
+        <SignOutButton mode="modal"/>
       </nav>
     </header>
   );
