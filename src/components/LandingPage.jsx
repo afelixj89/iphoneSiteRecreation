@@ -4,22 +4,22 @@ import {
   SignedOut,
   SignInButton,
   SignUpButton,
-  useAuth,
   useUser,
 } from "@clerk/clerk-react";
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const { user, isSignedIn } = useUser()
+  const { user, isSignedIn } = useUser();
 
   useEffect(() => {
     if (isSignedIn) {
-        console.log("User data:", user); // Log user data for debugging
-        navigate("/home"); // Automatically redirect to /home when signed in
+      console.log("Navigation triggered to /home");
+      navigate("/home"); // This should be called when signed in
     } else {
-        console.log("User is not signed in");
+      console.log("User not signed in, staying on /");
     }
-}, [isSignedIn, user, navigate]);
+  }, [isSignedIn, navigate]);
+  
 
   return (
     <div className="landing-page">
